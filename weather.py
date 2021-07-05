@@ -8,7 +8,7 @@ base_url = "https://api.openweathermap.org/data/2.5/weather?"
 #taking input "city name" from user
 city_name = input("Enter the city name: ")
 #complete_url variable to store the complete_url address
-complete_url= str(base_url + city_name + "&appid=" + api_key)
+complete_url = str(base_url + city_name + "&appid=" + api_key)
 
 #get methods of requests module retruns respons object
 response = requests.get(complete_url)
