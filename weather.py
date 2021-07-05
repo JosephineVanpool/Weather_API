@@ -22,17 +22,18 @@ response = requests.get(complete_url)
 code = response.status_code
 
 #json method of response object convert json format data into python format data
-x = response.json()
-print (pp.pprint(x))
+json_data = response.json()
+print (pp.pprint(json_data))
 print (code)
 
 #Now x contains list of nested dictionaries
 #check the value of "cod" key is equal to "404", means city is found otherwise, city is not found
 if response.ok:
     for index in range (0, 8):
-        local_time = datetime.datetime.fromtimestamp( x['daily'][index]['dt'] , tz=pytz.timezone('America/Chicago'))
+        local_time = datetime.datetime.fromtimestamp( json_data['daily'][index]['dt'] , tz=pytz.timezone('America/Chicago'))
         str_time = local_time.strftime( '%Y-%m-%d %a' )
-        print( f" Day [+{index}] {str_time} = { x['daily'][index]['weather']['description']} " )
+        print (str_time)
+        print( f" Day [+{index}] {str_time} = { json_data['daily'][index]['weather'][0]['description']} " )
 
 
 else:
