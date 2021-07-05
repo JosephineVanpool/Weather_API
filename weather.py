@@ -1,5 +1,6 @@
 #importing modules
-import requests,json, pprint
+import requests,json, pprint, datetime, pytz
+
 pp =pprint.PrettyPrinter(indent =4)
 
 #type your API KEY Here.
@@ -28,23 +29,11 @@ print (code)
 #Now x contains list of nested dictionaries
 #check the value of "cod" key is equal to "404", means city is found otherwise, city is not found
 if response.ok:
-    #store the value of "main" key in variable y
-    y = x["main"]
+    for index in range (0, 8):
+        local_time = datetime.datetime.fromtimestamp( x['daily'][index]['dt'] , tz=pytz.timezone('America/Chicago'))
+        str_time = local_time.strftime( '%Y-%m-%d %a' )
+        print( f" Day [+{index}] {str_time} = { x['daily'][index]['weather']['description']} " )
 
-    #store the value coressponding to the "temp" key of y
 
-
-    
-    #store the value of "weather" key in variable z
-    z= x["weather"]
-    
-    #store the value coressponding to the "description" key
-    #at the 0th index of z
-    weather_description = z[0]["description"]
-    #print the following values  
-    print(" Temperature(in kelvin unit)= " +
-                       str(daily_weather) + 
-                       "\n description = " +
-                       str(weather_description))
 else:
     print("City Not Found")                       
