@@ -2,7 +2,7 @@
 import requests,json, pprint, datetime, pytz
 from statistics import mode
 
-pp =pprint.PrettyPrinter(indent =4)
+#pp =pprint.PrettyPrinter(indent =4)
 
 #type your API KEY Here.
 api_key = "09d4916d61723eb6f4bd9b01105317c9"
