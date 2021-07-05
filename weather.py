@@ -1,5 +1,6 @@
 #importing modules
 import requests,json, pprint, datetime, pytz
+from statistics import mode
 
 pp =pprint.PrettyPrinter(indent =4)
 
@@ -26,6 +27,7 @@ json_data = response.json()
 print (pp.pprint(json_data))
 print (code)
 
+daily_weather_list = []
 #Now x contains list of nested dictionaries
 #check the value of "cod" key is equal to "404", means city is found otherwise, city is not found
 if response.ok:
@@ -33,7 +35,9 @@ if response.ok:
         local_time = datetime.datetime.fromtimestamp( json_data['daily'][index]['dt'] , tz=pytz.timezone('America/Chicago'))
         str_time = local_time.strftime( '%Y-%m-%d %a' )
         print (str_time)
-        print( f" Day [+{index}] {str_time} = { json_data['daily'][index]['weather'][0]['description']} " )
+        daily_weather = json_data['daily'][index]['weather'][0]['description']
+        daily_weather_list.append(daily_weather)
+        print( f" Day [+{index}] {str_time} = {daily_weather} " )
 
 
 else:
