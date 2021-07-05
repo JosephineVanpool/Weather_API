@@ -39,6 +39,9 @@ if response.ok:
         daily_weather_list.append(daily_weather)
         print( f" Day [+{index}] {str_time} = {daily_weather} " )
 
+    print (daily_weather_list)
+    mode_daily_weather = mode (daily_weather_list)
+    print (mode_daily_weather)
 
 else:
     print("City Not Found")                       
