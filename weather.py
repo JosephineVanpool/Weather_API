@@ -44,7 +44,6 @@ def get_weather_mode(location_name,json_data):
     print (mode_daily_weather)
    
 
-
 if __name__ == "__main__":
     location = {"Mexico Michcocan":(-19.5665,101.7068)}
     for key in location:
