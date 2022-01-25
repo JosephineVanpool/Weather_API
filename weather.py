@@ -33,11 +33,11 @@ def get_weather_mode(location_name,json_data):
     print (loc_name)
     for index in range (0, 8):
         local_time = datetime.datetime.fromtimestamp( json_data['daily'][index]['dt'] , tz=pytz.timezone('America/Chicago'))
-        str_time = local_time.strftime( '%Y-%m-%d %a' )
-        print (str_time)
+        #str_time = local_time.strftime( '%Y-%m-%d %a' )
+        #print (str_time)
         daily_weather = json_data['daily'][index]['weather'][0]['description']
         daily_weather_list.append(daily_weather)
-        print( f" Day [+{index}] {str_time} = {daily_weather} " )
+        #print( f" Day [+{index}] {str_time} = {daily_weather} " )
 
     print (daily_weather_list)
     mode_daily_weather = mode (daily_weather_list)
@@ -46,7 +46,7 @@ def get_weather_mode(location_name,json_data):
 
 
 if __name__ == "__main__":
-    location = {"Mexico Michcocan":(-19.5665,101.7068)}
+    location = {"Mexico Michcocan":(-19.5665,101.7068), "Mexico Sinaloa": (25.0, -107.499998)}
     for key in location:
         location_name = key
         latitude= location[key][0]
